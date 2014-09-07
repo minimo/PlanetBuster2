@@ -524,8 +524,8 @@ var enemyAlgorithm = {
 	//////////////////////////////////////////////////////////////////////////////
 	'Carrier_init':function(){
 		this.phase = 0;
-		this.tl.moveBy(0,200,sec(3)).then(function(){this.phase=0;}).delay(sec(7)).moveBy(0,300,sec(4));
-		this.obj1 = this.manager.enterEnemy(this,'Turret1',0,-20,0);
+		this.tl.moveBy(0,200,sec(3)).then(function(){this.phase=0;}).delay(sec(7)).moveBy(0,400,sec(5));
+		this.obj1 = this.manager.enterEnemy(this,'Turret1',0,-32,0);
 	},
 	'Carrier':function(){
 		if( this.obj1 ){
@@ -556,6 +556,7 @@ var enemyAlgorithm = {
 		this.sprite.scaleX = this.sprite.scaleY = 1.5;
 		var x = this.x;
 		var y = this.y;
+/*
 		for( var i = 0; i < 5; i++ ){
 			var dis = rand(50)+50;
 			var rad = rand(360)*toRad;
@@ -568,13 +569,14 @@ var enemyAlgorithm = {
 			this.tl.moveTo(x,y,sec(3),enchant.Easing.SIN_EASEOUT);
 		}
 		this.tl.moveBy(0,400,sec(5),enchant.Easing.SIN_EASEOUT);
-
+*/
 		//アノテーション
 		this.obj1 = this.manager.effects.enterEffect(this,'item_ant',70*0.7,-20*0.7,0,0,1,0,0,0,funcItem);
 		this.obj1.sprite.scaleX = this.obj1.sprite.scaleY = 0.7;
 		this.obj1.sprite.frame = 8;
 	},
 	'Item':function(){
+		if( this.time % spw == 0 )this.y++;
 		if( this.name == 'Item_Bit' ){
 			if( this.time % this.spw == 0 ){
 				this.sprite.frame++;
@@ -591,7 +593,6 @@ var enemyAlgorithm = {
 	//////////////////////////////////////////////////////////////////////////////
 	'Rock1_init':function(){
 		this.speed = (rand(5)+1)*this.spd;
-		
 	},
 	'Rock1':function(){
 	},
