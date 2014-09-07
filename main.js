@@ -69,12 +69,12 @@ window.onload = function(){
 	if( (navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) || navigator.userAgent.indexOf('iPod') > 0 ){
 		game.fps = 30;
 		userAgent = "iOS";
-		soundEnable = false;
+		soundEnable = true;
 		smartphone = true;
 	}else if( navigator.userAgent.indexOf('Android') > 0){
 		game.fps = 30;
 		userAgent = "Android";
-		soundEnable = false;
+		soundEnable = true;
 		smartphone = true;
 	}else if( navigator.userAgent.indexOf('Chrome') > 0){
 		userAgent = "Chrome";
