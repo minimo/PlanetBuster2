@@ -838,10 +838,6 @@ GameMain = Class.create(enchant.Scene,{
 	//プレイヤミス
 	//////////////////////////////////////////////////////////////////////////////
 	playerMiss:function(){
-		//アイテムドロップ
-		if( this.player.level > 1 ){
-			for( var i = 0; i < this.player.level-1; i++ )this.enemies.enterEnemy(null,'Item_Power',this.player.x,this.player.y,0);
-		}
 
 		//残機減
 		this.life--;
@@ -850,12 +846,23 @@ GameMain = Class.create(enchant.Scene,{
 		this.missStage++;
 		this.player.dead();
 
-			//難易度がEASY以外は武装を初期化
-		if( difficulty == 1 ){
-		}else if( difficulty == 2 ){
-			this.player.level-=2;	//NORMALは２レベルダウン
+        //難易度がEASY以外は武装を初期化
+        //NORMALの場合
+		if (difficulty == 2) {
+    		//アイテムドロップ
+            this.enemies.enterEnemy(null, 'Item_Power', this.player.x, this.player.y, 0);
+			this.player.level-=2;	//２レベルダウン
 			if( this.player.level < 0 )this.player.level = 0;
-		}else{
+        }
+        //HARDの場合
+        if (difficulty == 3) {
+    		//アイテムドロップ
+    		if (this.player.level > 2 ){
+	    	    var drop = this.player.level-2;
+		        if (drop < 0) return;
+		        if (drop > 3) drop = 3;
+    			for( var i = 0; i < drop; i++ )this.enemies.enterEnemy(null, 'Item_Power', this.player.x, this.player.y, 0);
+	    	}
 			this.player.level = 0;
 		}
 
