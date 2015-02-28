@@ -341,6 +341,7 @@ Title = Class.create(enchant.Scene,{
 			case 2:
 				sounds.playSE('media/se_byu.mp3',seVolume*0.6);
 				this.mask.tl.fadeIn(sec(0.25)).then(function(){
+					tutorial = new Tutorial;
 					game.pushScene(tutorial);
 //					game.pushScene(config);
 				});
@@ -388,6 +389,11 @@ Tutorial = Class.create(enchant.Scene,{
 		var skip = new Text(320-16*4,5,"SKIP");
 		this.grp2.addChild(skip);
 
+		//現在ページ
+		this.page = 0;
+		this.pageMax = 8;
+		this.touch = true;
+
 		//説明ページ
 		this.img1 = new Sprite(320,320);
 		this.img1.image = game.assets['media/tutorial_1.png'];
@@ -396,10 +402,6 @@ Tutorial = Class.create(enchant.Scene,{
 		this.img2.image = game.assets['media/tutorial_2.png'];
 		this.grp1.addChild(this.img2);
 
-		//現在ページ
-		this.page = 0;
-		this.pageMax = 8;
-		this.touch = true;
 	},
 	onenter:function(){
 		this.img1.x = 0;
@@ -430,12 +432,12 @@ Tutorial = Class.create(enchant.Scene,{
 			case 1:
 				this.img1.next = 'media/tutorial_'+pg+'.png';
 				this.img1.tl.then(function(){this.image = game.assets[this.next];});
-//				this.img1.image = game.assets['media/tutorial_'+pg+'.png'];
+//				  this.img1.image = game.assets['media/tutorial_'+pg+'.png'];
 				break;
 			case 0:
 				this.img2.next = 'media/tutorial_'+pg+'.png';
 				this.img2.tl.then(function(){this.image = game.assets[this.next];});
-//				this.img2.image = game.assets['media/tutorial_'+pg+'.png'];
+//				  this.img2.image = game.assets['media/tutorial_'+pg+'.png'];
 				break;
 		}
 		this.touch = false;
