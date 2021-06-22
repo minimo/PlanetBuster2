@@ -150,7 +150,7 @@ window.onload = function(){
 		//チュートリアル
 		'media/tutorial_1.png','media/tutorial_2.png','media/tutorial_3.png',
 		'media/tutorial_4.png','media/tutorial_5.png','media/tutorial_6.png',
-		'media/tutorial_7.png','media/tutorial_8.png'
+		'media/tutorial_7.png','media/tutorial_8.png','media/tutorial_9.png'
 	);
 
 	//サウンド系は再生可能環境のみロードする
